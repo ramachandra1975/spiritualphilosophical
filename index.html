@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Part V — Panchamā: Consciousness, Cosmos & Planetary Science | The 108 Karanas</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cosmos:#060914;
+  --cosmos2:#0b1024;
+  --surface:#101528;
+  --card:#151c35;
+  --b1:rgba(150,200,255,0.1);
+  --b2:rgba(150,200,255,0.2);
+  --aurora1:#4affb4;
+  --aurora2:#7ab8ff;
+  --aurora3:#c87dff;
+  --aurora4:#ffb347;
+  --a1dim:rgba(74,255,180,0.1);
+  --a2dim:rgba(122,184,255,0.1);
+  --a3dim:rgba(200,125,255,0.1);
+  --a4dim:rgba(255,179,71,0.1);
+  --text:#dde8ff;
+  --text2:#8898cc;
+  --text3:#556090;
+  --sidebar-w:268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--cosmos);
+  color:var(--text);
+  font-family:'Nunito',sans-serif;
+  font-weight:300;
+  line-height:1.75;
+  display:flex;min-height:100vh;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 120% 60% at 80% 20%,rgba(74,255,180,0.025) 0%,transparent 60%),
+    radial-gradient(ellipse 80% 80% at 10% 60%,rgba(122,184,255,0.02) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% 90%,rgba(200,125,255,0.02) 0%,transparent 60%);
+  pointer-events:none;z-index:0;
+}
+/* SIDEBAR */
+.sidebar{
+  width:var(--sidebar-w);min-height:100vh;
+  background:linear-gradient(180deg,#060c1a,#04080f);
+  border-right:1px solid var(--b1);
+  position:fixed;top:0;left:0;overflow-y:auto;z-index:100;
+  display:flex;flex-direction:column;padding-bottom:2rem;
+}
+.sidebar::-webkit-scrollbar{width:3px;}
+.sidebar::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px;}
+.sb-brand{padding:1.5rem 1.2rem 1.1rem;border-bottom:1px solid var(--b1);}
+.sb-eye{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:var(--aurora1);text-transform:uppercase;margin-bottom:0.4rem;}
+.sb-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--aurora4);line-height:1.3;}
+.sb-sub{font-family:'Nunito',sans-serif;font-size:11px;color:var(--text3);margin-top:0.3rem;}
+.sb-badge{display:inline-block;margin-top:0.5rem;font-family:'DM Mono',monospace;font-size:9.5px;padding:2px 8px;background:var(--a1dim);border:1px solid rgba(74,255,180,0.25);border-radius:3px;color:var(--aurora1);}
+.nav-sec{padding:0.85rem 1.2rem 0.3rem;font-family:'Nunito',sans-serif;font-size:9px;letter-spacing:0.14em;color:var(--text3);text-transform:uppercase;}
+.nav-link{display:flex;align-items:flex-start;gap:9px;padding:0.4rem 1.2rem;text-decoration:none;color:var(--text2);font-family:'Nunito',sans-serif;font-size:12px;line-height:1.4;border-left:2px solid transparent;transition:all 0.15s;}
+.nav-link:hover{color:var(--text);background:rgba(122,184,255,0.05);}
+.nav-link.active{color:var(--aurora1);background:var(--a1dim);border-left-color:var(--aurora1);}
+.nav-link .num{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);padding-top:1px;min-width:18px;}
+.nav-link.active .num{color:var(--aurora1);}
+/* MAIN */
+.main{margin-left:var(--sidebar-w);flex:1;min-height:100vh;position:relative;z-index:1;}
+.prog-bar{position:fixed;top:0;left:var(--sidebar-w);right:0;height:2px;background:rgba(122,184,255,0.1);z-index:200;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--aurora1),var(--aurora3));width:0%;transition:width 0.1s;}
+/* HERO */
+.hero{
+  position:relative;padding:5rem 4rem 4rem;overflow:hidden;
+  background:linear-gradient(135deg,#060914,#0a1228);
+  border-bottom:1px solid var(--b1);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 70% at 75% 40%,rgba(200,125,255,0.07) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 50% at 15% 60%,rgba(74,255,180,0.04) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-eye{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:var(--aurora1);text-transform:uppercase;margin-bottom:1.1rem;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3.5rem);font-weight:400;line-height:1.15;color:var(--text);margin-bottom:0.5rem;}
+.hero-title em{font-style:italic;color:var(--aurora3);}
+.hero-sub{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--text2);margin-bottom:1.4rem;font-style:italic;}
+.hero-meta{display:flex;gap:2rem;flex-wrap:wrap;}
+.hero-mi{font-family:'Nunito',sans-serif;font-size:11px;color:var(--text3);}
+.hero-mi span{display:block;font-size:13px;font-weight:500;color:var(--text2);margin-top:2px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:1.3rem;}
+.htag{font-family:'Nunito',sans-serif;font-size:10.5px;padding:3px 10px;border-radius:3px;border:1px solid;}
+.ht-g{background:var(--a1dim);border-color:rgba(74,255,180,0.3);color:var(--aurora1);}
+.ht-p{background:var(--a3dim);border-color:rgba(200,125,255,0.3);color:var(--aurora3);}
+.ht-b{background:var(--a2dim);border-color:rgba(122,184,255,0.3);color:var(--aurora2);}
+.ht-o{background:var(--a4dim);border-color:rgba(255,179,71,0.3);color:var(--aurora4);}
+/* SECTION */
+.section{padding:3.5rem 4rem 4rem;border-bottom:1px solid var(--b1);position:relative;background:var(--cosmos);}
+.section:nth-child(even){background:var(--cosmos2);}
+.sec-hd{display:flex;align-items:flex-start;gap:1.25rem;margin-bottom:2rem;}
+.sec-num{font-family:'DM Mono',monospace;font-size:10.5px;color:var(--aurora1);padding:4px 10px;border:1px solid rgba(74,255,180,0.25);border-radius:3px;white-space:nowrap;margin-top:5px;background:var(--a1dim);}
+.sec-title{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:600;line-height:1.25;color:var(--text);}
+.sec-title .skt{display:block;font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--aurora4);font-weight:400;margin-top:0.2rem;}
+/* PROSE */
+.prose{max-width:820px;}
+.prose p{color:var(--text2);font-size:15px;line-height:1.9;margin-bottom:1.2rem;}
+.prose p strong{color:var(--text);font-weight:600;}
+.prose .lead{font-family:'Playfair Display',serif;font-size:1.15rem;line-height:1.8;color:var(--text);margin-bottom:1.6rem;}
+.prose h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--text);margin:2rem 0 0.7rem;}
+.prose h4{font-family:'Nunito',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin:1.5rem 0 0.5rem;}
+.prose blockquote{border-left:2px solid var(--aurora4);padding:0.75rem 0 0.75rem 1.4rem;margin:1.5rem 0;}
+.prose blockquote p{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--aurora4);margin:0;}
+.prose blockquote cite{display:block;font-size:11px;color:var(--text3);margin-top:0.4rem;font-style:normal;}
+/* FORMULA */
+.fbox{background:var(--card);border:1px solid var(--b2);border-radius:6px;padding:1.1rem 1.4rem;margin:1.4rem 0;font-family:'DM Mono',monospace;font-size:13px;color:var(--aurora1);overflow-x:auto;line-height:1.7;}
+.fbox .fl{font-family:'Nunito',sans-serif;font-size:10px;color:var(--text3);margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.08em;}
+.fbox .fd{color:var(--text3);}
+/* PHILOSOPHY CARDS */
+.philo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin:1.75rem 0;}
+.pcard{background:var(--card);border:1px solid var(--b1);border-radius:8px;padding:1.2rem 1.3rem;position:relative;overflow:hidden;}
+.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.pcard.pa::before{background:linear-gradient(90deg,var(--aurora1),transparent);}
+.pcard.pb::before{background:linear-gradient(90deg,var(--aurora3),transparent);}
+.pcard.pc::before{background:linear-gradient(90deg,var(--aurora4),transparent);}
+.pcard.pd::before{background:linear-gradient(90deg,var(--aurora2),transparent);}
+.pc-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.65rem;}
+.pc-num{font-family:'DM Mono',monospace;font-size:10px;padding:2px 7px;border-radius:2px;background:rgba(122,184,255,0.07);color:var(--text3);border:1px solid var(--b1);}
+.pc-sys{font-family:'Nunito',sans-serif;font-size:9.5px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;}
+.pc-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--aurora4);margin-bottom:2px;}
+.pc-en{font-family:'Nunito',sans-serif;font-size:11px;color:var(--text3);margin-bottom:0.6rem;font-style:italic;}
+.pc-domain{font-family:'Nunito',sans-serif;font-size:10.5px;font-weight:600;color:var(--aurora1);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.4rem;}
+.pc-desc{font-size:13px;line-height:1.65;color:var(--text2);margin-bottom:0.65rem;}
+.pc-phys{background:var(--cosmos);border-radius:4px;padding:0.55rem 0.7rem;font-size:12px;color:var(--text2);line-height:1.55;border-left:2px solid var(--aurora3);}
+.pc-phys strong{color:var(--aurora3);font-weight:600;}
+.ptags{display:flex;flex-wrap:wrap;gap:5px;margin-top:0.6rem;}
+.ptag{font-family:'Nunito',sans-serif;font-size:10px;padding:2px 7px;border-radius:2px;border:1px solid;}
+.pt-g{background:var(--a1dim);border-color:rgba(74,255,180,0.25);color:var(--aurora1);}
+.pt-p{background:var(--a3dim);border-color:rgba(200,125,255,0.25);color:var(--aurora3);}
+.pt-b{background:var(--a2dim);border-color:rgba(122,184,255,0.25);color:var(--aurora2);}
+.pt-o{background:var(--a4dim);border-color:rgba(255,179,71,0.25);color:var(--aurora4);}
+/* PLANET TABLE */
+.ptable{width:100%;border-collapse:collapse;font-size:13px;margin:1.25rem 0;}
+.ptable th{text-align:left;padding:0.55rem 0.9rem;background:var(--surface);color:var(--text2);font-family:'Nunito',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;border-bottom:1px solid var(--b2);}
+.ptable td{padding:0.65rem 0.9rem;color:var(--text2);border-bottom:1px solid var(--b1);}
+.ptable tr:hover td{background:rgba(122,184,255,0.03);}
+.ptable .mono{font-family:'DM Mono',monospace;color:var(--aurora1);font-size:12px;}
+.ptable .gold{color:var(--aurora4);}
+.ptable .grn{color:var(--aurora1);}
+.ptable .purp{color:var(--aurora3);}
+/* CALLOUTS */
+.co{border-radius:5px;padding:1.1rem 1.4rem;margin:1.5rem 0;font-size:14px;line-height:1.7;color:var(--text2);}
+.co-g{background:var(--a1dim);border:1px solid rgba(74,255,180,0.2);border-left:3px solid var(--aurora1);}
+.co-p{background:var(--a3dim);border:1px solid rgba(200,125,255,0.2);border-left:3px solid var(--aurora3);}
+.co-b{background:var(--a2dim);border:1px solid rgba(122,184,255,0.2);border-left:3px solid var(--aurora2);}
+.co-o{background:var(--a4dim);border:1px solid rgba(255,179,71,0.2);border-left:3px solid var(--aurora4);}
+.co strong{color:var(--text);font-weight:600;}
+/* DATA GRID */
+.dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:10px;margin:1.25rem 0;}
+.dc{background:var(--card);border:1px solid var(--b1);border-radius:5px;padding:0.9rem;}
+.dc .dcl{font-family:'Nunito',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:0.09em;color:var(--text3);margin-bottom:0.3rem;}
+.dc .dcv{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--text);line-height:1.2;}
+.dc .dcs{font-family:'Nunito',sans-serif;font-size:11px;color:var(--text3);margin-top:0.25rem;}
+.dc.dg_{border-color:rgba(74,255,180,0.3);}.dc.dg_ .dcv{color:var(--aurora1);}
+.dc.dp_{border-color:rgba(200,125,255,0.3);}.dc.dp_ .dcv{color:var(--aurora3);}
+.dc.db_{border-color:rgba(122,184,255,0.3);}.dc.db_ .dcv{color:var(--aurora2);}
+.dc.do_{border-color:rgba(255,179,71,0.3);}.dc.do_ .dcv{color:var(--aurora4);}
+/* THREE COL */
+.tc{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.1rem;margin:1.25rem 0;}
+.ib{background:var(--card);border:1px solid var(--b1);border-radius:5px;padding:1.1rem;}
+.ib h4{font-family:'Nunito',sans-serif;font-size:12px;font-weight:600;color:var(--text);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em;}
+.ib p{font-size:12.5px;color:var(--text2);line-height:1.6;margin:0;}
+/* VIZ */
+.viz-wrap{background:var(--card);border:1px solid var(--b1);border-radius:8px;overflow:hidden;margin:1.75rem 0;}
+.viz-lbl{padding:0.65rem 1.2rem;border-bottom:1px solid var(--b1);font-family:'Nunito',sans-serif;font-size:11px;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase;}
+/* REFS */
+.refs{list-style:none;}
+.refs li{padding:0.65rem 0;border-bottom:1px solid var(--b1);font-size:13px;color:var(--text2);line-height:1.6;}
+.refs li:last-child{border:none;}
+.refs .rn{font-family:'DM Mono',monospace;font-size:10px;color:var(--aurora1);margin-right:7px;}
+.refs .rs{color:var(--text3);font-size:11.5px;display:block;margin-top:2px;}
+/* FOOTER */
+.footer{background:var(--cosmos2);padding:3rem 4rem;border-top:1px solid var(--b1);}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;}
+.fbt{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--aurora4);margin-bottom:0.5rem;}
+.footer p{font-family:'Nunito',sans-serif;font-size:13px;color:var(--text3);line-height:1.7;}
+.fn h5{font-family:'Nunito',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:0.6rem;}
+.fn a{display:block;font-family:'Nunito',sans-serif;color:var(--text3);text-decoration:none;font-size:12.5px;margin-bottom:0.3rem;transition:color 0.15s;}
+.fn a:hover{color:var(--text2);}
+.fb-bot{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--b1);display:flex;justify-content:space-between;font-family:'Nunito',sans-serif;font-size:11.5px;color:var(--text3);}
+@media(max-width:1100px){:root{--sidebar-w:220px;}.hero,.section{padding-left:2.5rem;padding-right:2.5rem;}.tc{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){.sidebar{transform:translateX(-100%);}.main{margin-left:0;}.hero,.section{padding:2.5rem 1.5rem;}.footer{padding:2rem 1.5rem;}.fg{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="prog-bar"><div class="prog-fill" id="prog"></div></div>
+<aside class="sidebar">
+  <div class="sb-brand">
+    <div class="sb-eye">108 Karanas · Part V of VI</div>
+    <div class="sb-title">Panchamā<br>Consciousness &amp; Cosmos</div>
+    <div class="sb-sub">Spiritual · Philosophical · Astronomy</div>
+    <span class="sb-badge">Synthesis Part · All Domains</span>
+  </div>
+  <div class="nav-sec">Spiritual Foundations</div>
+  <a href="#s1" class="nav-link active"><span class="num">01</span>Samkhya &amp; Vedanta Cosmology</a>
+  <a href="#s2" class="nav-link"><span class="num">02</span>Tantra &amp; Spanda — Primordial Vibration</a>
+  <a href="#s3" class="nav-link"><span class="num">03</span>Nataraja: Cosmic Dance Physics</a>
+  <div class="nav-sec">Consciousness Studies</div>
+  <a href="#s4" class="nav-link"><span class="num">04</span>IIT — Integrated Information Theory</a>
+  <a href="#s5" class="nav-link"><span class="num">05</span>Penrose-Hameroff &amp; Vedic Mind</a>
+  <a href="#s6" class="nav-link"><span class="num">06</span>Rasa Theory &amp; Quantum Qualia</a>
+  <div class="nav-sec">Planetary Science</div>
+  <a href="#s7" class="nav-link"><span class="num">07</span>Nakshatra System &amp; Orbital Mechanics</a>
+  <a href="#s8" class="nav-link"><span class="num">08</span>Lunar Cycle Encoding in Karanas</a>
+  <a href="#s9" class="nav-link"><span class="num">09</span>Planetary Resonances &amp; Tala</a>
+  <a href="#s10" class="nav-link"><span class="num">10</span>Solar Activity &amp; Cosmic Cycles</a>
+  <div class="nav-sec">Deep Space</div>
+  <a href="#s11" class="nav-link"><span class="num">11</span>Exoplanet Atmospheres &amp; Life</a>
+  <a href="#s12" class="nav-link"><span class="num">12</span>Pulsar Timing &amp; Vedic Clocks</a>
+  <a href="#s13" class="nav-link"><span class="num">13</span>Galactic Structure &amp; Yugas</a>
+  <a href="#s14" class="nav-link"><span class="num">14</span>Multiverse &amp; Brahma's Day</a>
+  <div class="nav-sec">Final Synthesis</div>
+  <a href="#s15" class="nav-link"><span class="num">15</span>Shiva Nataraja — Unified Symbol</a>
+  <a href="#s16" class="nav-link"><span class="num">16</span>Vedic Cosmological Timeline</a>
+  <a href="#s17" class="nav-link"><span class="num">17</span>Panchabhuta &amp; 5 Forces</a>
+  <a href="#s18" class="nav-link"><span class="num">18</span>108 Constants of Nature</a>
+  <a href="#s19" class="nav-link"><span class="num">19</span>Grand Unified Theory of Karanas</a>
+  <a href="#s20" class="nav-link"><span class="num">20</span>Bibliography</a>
+</aside>
+
+<main class="main">
+<section class="hero" id="top">
+  <div class="hero-eye">Part V · Panchamā · Consciousness × Cosmos × Planets · Synthesis</div>
+  <h1 class="hero-title"><em>Panchamā</em>:<br>Consciousness &amp; the Cosmic Order</h1>
+  <p class="hero-sub">Spiritual Philosophy, Astronomy &amp; Planetary Science — The Great Synthesis</p>
+  <div class="hero-meta">
+    <div class="hero-mi">Research level<span>NASA / CERN / IIT Advanced</span></div>
+    <div class="hero-mi">Scope<span>Cross-domain synthesis</span></div>
+    <div class="hero-mi">Pages<span>20 sections · ~13,000 words</span></div>
+    <div class="hero-mi">Element<span>Ākāsha × Consciousness</span></div>
+  </div>
+  <div class="hero-tags">
+    <span class="htag ht-p">Samkhya · Vedanta · Tantra</span>
+    <span class="htag ht-p">IIT Consciousness Theory</span>
+    <span class="htag ht-p">Penrose-Hameroff Orch-OR</span>
+    <span class="htag ht-g">Nakshatra Orbital Mechanics</span>
+    <span class="htag ht-g">Planetary Resonances</span>
+    <span class="htag ht-b">LIGO · Webb · Chandra</span>
+    <span class="htag ht-o">Shiva Nataraja — Cosmic Physicist</span>
+    <span class="htag ht-o">Brahma's Day &amp; Cosmic Time</span>
+  </div>
+</section>
+
+<!-- S1: Samkhya -->
+<section class="section" id="s1">
+  <div class="sec-hd"><span class="sec-num">Page 01</span>
+    <div><h2 class="sec-title">Samkhya &amp; Vedanta Cosmology — The Original Unified Theory
+      <span class="skt">सांख्य · वेदान्त ब्रह्माण्ड विज्ञान</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">The Samkhya system — attributed to the sage Kapila (c. 700 BCE) — is humanity's oldest systematically formulated cosmological framework. Predating both the Natya Shastra and the Sulba Sutras, Samkhya provides the philosophical foundation upon which the 108 Karana system is built.</p>
+    <p>Samkhya posits two ultimate principles: <strong>Purusha</strong> (pure consciousness, uncaused, unchanging, omnipresent) and <strong>Prakriti</strong> (primordial matter, the ground of all physical manifestation). This binary is structurally isomorphic to the physicist's distinction between the observer (measurement apparatus / consciousness) and the observed (quantum state / wavefunction) — the measurement problem of quantum mechanics in metaphysical form.</p>
+    <p>From the interaction of Purusha and Prakriti emerges a 25-element hierarchy of cosmic evolution called the <em>Tattvas</em>: from the most subtle (Mahat/Buddhi — cosmic intelligence) through the five tanmatras (subtle elements: sound, touch, form, taste, smell) down to the five Mahabhuta (gross elements: space, air, fire, water, earth). This 25-step hierarchy from pure consciousness to gross matter has a precise structural parallel in the renormalization group flow of quantum field theory: from the UV (ultraviolet, high-energy, fundamental) fixed point down through successive energy scales to the IR (infrared, low-energy, classical) physics we observe.</p>
+    <div class="philo-grid">
+      <div class="pcard pa">
+        <div class="pc-hd"><span class="pc-num">Tattva 1</span><span class="pc-sys">Samkhya</span></div>
+        <div class="pc-name">Purusha</div><div class="pc-en">Pure Consciousness</div>
+        <div class="pc-domain">Wave Function / Observer</div>
+        <div class="pc-desc">Uncaused, unchanging, omnipresent pure awareness. Cannot be reduced to anything more fundamental. The "witness" of all experience without itself being an object of experience.</div>
+        <div class="pc-phys"><strong>Physics parallel:</strong> The measurement problem in quantum mechanics. The Wigner's Friend paradox. Consciousness as irreducible in IIT (Tononi). The "hard problem" of consciousness (Chalmers, 1995): why is there subjective experience at all?</div>
+        <div class="ptags"><span class="ptag pt-p">Measurement problem</span><span class="ptag pt-g">IIT irreducibility</span></div>
+      </div>
+      <div class="pcard pb">
+        <div class="pc-hd"><span class="pc-num">Tattva 2</span><span class="pc-sys">Samkhya</span></div>
+        <div class="pc-name">Prakriti</div><div class="pc-en">Primordial Matter-Energy</div>
+        <div class="pc-domain">Quantum Field / Vacuum</div>
+        <div class="pc-desc">The ground of all physical manifestation — not a thing but the potential for all things. Prakriti in its unmanifest state is pure potentiality: zero observable properties but infinite capacity for manifestation.</div>
+        <div class="pc-phys"><strong>Physics parallel:</strong> The quantum vacuum — not empty but filled with virtual fluctuations, zero-point energy, and condensates (Higgs VEV, quark condensate). The physical vacuum is the "Prakriti" of modern physics: unobservable in itself, yet the ground of all observable particles and fields.</div>
+        <div class="ptags"><span class="ptag pt-b">Quantum vacuum</span><span class="ptag pt-g">Higgs VEV = 246 GeV</span></div>
+      </div>
+      <div class="pcard pc">
+        <div class="pc-hd"><span class="pc-num">Tattva 3</span><span class="pc-sys">Samkhya</span></div>
+        <div class="pc-name">Mahat / Buddhi</div><div class="pc-en">Cosmic Intelligence</div>
+        <div class="pc-domain">Information / Entropy</div>
+        <div class="pc-desc">The first product of Purusha-Prakriti interaction: cosmic intelligence or "great principle." The capacity for discrimination, decision, and ordering — the principle of cosmic information.</div>
+        <div class="pc-phys"><strong>Physics parallel:</strong> The holographic principle (Bekenstein-Hawking): all information in a volume is encoded on its boundary. Cosmic information = S_BH = A/4l_P². Wheeler's "It from Bit": the universe's ultimate substrate is information. Mahat as the cosmic information capacity of the universe.</div>
+        <div class="ptags"><span class="ptag pt-p">Holographic principle</span><span class="ptag pt-o">Wheeler "It from Bit"</span></div>
+      </div>
+      <div class="pcard pd">
+        <div class="pc-hd"><span class="pc-num">Tattvas 14–18</span><span class="pc-sys">Samkhya</span></div>
+        <div class="pc-name">Panchabhuta</div><div class="pc-en">The Five Great Elements</div>
+        <div class="pc-domain">4 Forces + Higgs Field</div>
+        <div class="pc-desc">Akasha (space/ether), Vayu (air/motion), Tejas (fire/energy), Apas (water/cohesion), Prithvi (earth/mass). The five elements correspond structurally to the five fundamental entities of modern physics: spacetime, strong force, electromagnetism, weak force, and the Higgs mass-giving field.</div>
+        <div class="pc-phys"><strong>Physics parallel:</strong> Akasha = spacetime continuum; Vayu = weak nuclear force (motion/change); Tejas = electromagnetism (light/fire); Apas = strong force (binding/cohesion); Prithvi = Higgs field (mass/solidity). 5 elements → 4 forces + 1 scalar field = 5 fundamental entities.</div>
+        <div class="ptags"><span class="ptag pt-b">Standard Model</span><span class="ptag pt-g">Higgs = Prithvi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S2: Tantra and Spanda -->
+<section class="section" id="s2">
+  <div class="sec-hd"><span class="sec-num">Page 02</span>
+    <div><h2 class="sec-title">Tantra &amp; Spanda — The Primordial Vibration
+      <span class="skt">स्पन्द — The Throbbing Pulse of Consciousness</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">The Spanda Karikas (Vasugupta, c. 850 CE), the foundational text of Kashmir Shaivism, identifies Spanda — the primordial vibration or throb of consciousness — as the fundamental creative principle of the universe. This is one of the most precise anticipations of quantum field theory in pre-modern thought.</p>
+    <blockquote>
+      <p>"yasmiñśchande pratiṣṭhitā viśvam etad vibhāvyate / tasyā-vikalpitā śaktiḥ spandaḥ sarvagato 'vyayaḥ"</p>
+      <cite>— Spanda Karikas 1.1: "In that vibration in which the entire universe is established and by which it is revealed — that undivided power is Spanda, all-pervading and imperishable."</cite>
+    </blockquote>
+    <p>The term <em>spanda</em> (from √spand, "to throb, to vibrate") describes consciousness as fundamentally oscillatory — not a static substance but a dynamic, self-referential vibration. This is structurally identical to the quantum field theory description of fundamental particles: each particle species is a mode of vibration of a quantum field that fills all of space.</p>
+    <div class="dg">
+      <div class="dc dg_"><div class="dcl">Spanda frequency analogue</div><div class="dcv">E = hf</div><div class="dcs">Energy quantized in units of ℏω</div></div>
+      <div class="dc dp_"><div class="dcl">Fields in Standard Model</div><div class="dcv">17</div><div class="dcs">Each a "spanda" — a vibrating field</div></div>
+      <div class="dc db_"><div class="dcl">String vibration modes</div><div class="dcv">∞</div><div class="dcs">Infinite modes → particle zoo</div></div>
+      <div class="dc do_"><div class="dcl">Schrodinger cat</div><div class="dcv">Ψ = α|↑⟩+β|↓⟩</div><div class="dcs">Superposition = Spanda potentiality</div></div>
+    </div>
+    <h3>The Trika Cosmology and Gauge Theory</h3>
+    <p>Kashmir Shaivism's Trika system describes three fundamental principles: Shiva (pure consciousness/ground), Shakti (dynamic creative power/field), and Nara (the individual soul/particle). This triadic structure — ground state, dynamic field, and localized excitation — maps precisely onto the structure of gauge quantum field theory: <strong>vacuum state</strong> (Shiva), <strong>gauge field</strong> (Shakti), and <strong>particle/quasiparticle</strong> (Nara). The 36 Tattvas of the Trika system (more detailed than Samkhya's 25) find correspondence in the 36 fermion quantum states of one generation of the Standard Model (quarks: 6 flavors × 3 colors × 2 spins = 36).</p>
+    <div class="co co-p">
+      <strong>Abhinavagupta's Tantraloka (c. 1000 CE):</strong> The 37-volume Tantraloka by Abhinavagupta of Kashmir contains descriptions of consciousness as a self-luminous, self-referential field that vibrates and creates multiplicities of experience through its own self-reflection (vimarsha). The mathematical structure of this self-referential system anticipates Gödel's incompleteness theorem (1931), Hofstadter's strange loops, and the self-referential structure of quantum measurement.
+    </div>
+  </div>
+</section>
+
+<!-- S3: Nataraja -->
+<section class="section" id="s3">
+  <div class="sec-hd"><span class="sec-num">Page 03</span>
+    <div><h2 class="sec-title">Shiva Nataraja — The Cosmic Physicist
+      <span class="skt">नटराज — Lord of the Dance</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">The Nataraja — Shiva as the Lord of the Cosmic Dance — is the most complete symbolic representation of the Karana system and its physical content. A Nataraja statue stands at the entrance of CERN's headquarters in Geneva, gifted by the Indian government in 2004, recognizing the deep connection between the cosmic dance and particle physics.</p>
+    <div class="viz-wrap">
+      <div class="viz-lbl">Nataraja iconographic elements and their physics correspondences</div>
+      <canvas id="natarajaCanvas" width="820" height="320"></canvas>
+    </div>
+    <table class="ptable">
+      <thead><tr><th>Nataraja element</th><th>Traditional meaning</th><th>Modern physics interpretation</th><th>Physics domain</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Ananda Tandava pose</strong></td><td>The dance of bliss/creation</td><td>Continuous creation-annihilation of virtual particles</td><td class="grn">QFT vacuum fluctuations</td></tr>
+        <tr><td><strong>Damaru (drum)</strong></td><td>Sound of creation / primordial AUM</td><td>Quantum of vibration; graviton (spin-2)</td><td class="grn">String theory / gravity</td></tr>
+        <tr><td><strong>Abhaya hasta (raised hand)</strong></td><td>Protection / "Fear not"</td><td>CPT theorem: fundamental symmetry preserved</td><td class="purp">Symmetry principles</td></tr>
+        <tr><td><strong>Agni (fire in hand)</strong></td><td>Destruction / dissolution</td><td>Black hole evaporation; Hawking radiation</td><td class="gold">BH thermodynamics</td></tr>
+        <tr><td><strong>Raised left leg (Bhujanga)</strong></td><td>Liberation / release</td><td>Escape from gravitational well; asymptotic freedom</td><td class="grn">QCD / GR</td></tr>
+        <tr><td><strong>Apasmara (dwarf underfoot)</strong></td><td>Ignorance crushed by knowledge</td><td>Spontaneous symmetry breaking: false vacuum eliminated</td><td class="purp">Higgs mechanism</td></tr>
+        <tr><td><strong>Prabhamandala (flame halo)</strong></td><td>The universe; cycle of time</td><td>Light cone of spacetime; closed timelike curves</td><td class="gold">General relativity</td></tr>
+        <tr><td><strong>Matted hair / Ganga</strong></td><td>Cosmic river / time flow</td><td>Arrow of time; entropy increase (2nd law)</td><td class="grn">Thermodynamics</td></tr>
+      </tbody>
+    </table>
+    <div class="co co-o">
+      <strong>Fritjof Capra (1975):</strong> In "The Tao of Physics," Capra first systematically documented the correspondence between the Nataraja's cosmic dance and the dance of subatomic particles. He wrote: "The dance of Shiva is the dance of subatomic matter... Modern physics has shown that the rhythm of creation and destruction is not only manifest in the turn of the seasons and in the birth and death of all living creatures, but is also the very essence of inorganic matter."
+    </div>
+  </div>
+</section>
+
+<!-- S4: IIT -->
+<section class="section" id="s4">
+  <div class="sec-hd"><span class="sec-num">Page 04</span>
+    <div><h2 class="sec-title">Integrated Information Theory &amp; Vedic Consciousness
+      <span class="skt">चेतना का एकीकृत सिद्धांत</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">Giulio Tononi's Integrated Information Theory (IIT, 2004–present) is the most mathematically rigorous scientific theory of consciousness currently available. Its central quantity, Φ (phi), measures the degree to which a system generates information "above and beyond" its parts — precisely the Vedic description of consciousness as an irreducible wholeness.</p>
+    <div class="fbox">
+      <div class="fl">IIT 3.0 — Integrated Information Φ</div>
+      Φ = min over all partitions P of: Σ_P(A; B | S)<br><br>
+      where Σ_P(A; B | S) is the "phi" of the bipartition (A,B) of mechanism S<br>
+      Φ = 0 for any system that can be fully decomposed into independent parts<br>
+      Φ &gt; 0 requires irreducible causal structure — "more than the sum of parts"<br><br>
+      <span class="fd">Vedic parallel: Advaita Vedanta — consciousness as non-dual, irreducible awareness (Chit)</span><br>
+      <span class="fd">Upanishadic mahavakya: "Prajñānam Brahma" — Consciousness is Brahman (irreducible, absolute)</span>
+    </div>
+    <h3>The Karana System as a High-Φ Structure</h3>
+    <p>The 108 Karanas, considered as a relational system — where each Karana is defined partly by its relationships to preceding and following Karanas, and where the four groups of 27 cross-reference each other — constitute a highly integrated information structure with potentially high Φ. The Rasa theory of Natya Shastra specifies that the nine emotional essences (Rasas) cannot be reduced to individual body movements but emerge from the integrated pattern of multiple Karanas performed in sequence. This emergence is precisely what IIT's Φ measures.</p>
+    <table class="ptable">
+      <thead><tr><th>Vedic concept</th><th>Text / tradition</th><th>IIT 3.0 equivalent</th><th>Key principle</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Chit (consciousness)</strong></td><td>Advaita Vedanta</td><td>Φ &gt; 0 (irreducibility)</td><td class="grn">Non-decomposable awareness</td></tr>
+        <tr><td><strong>Sat (being/existence)</strong></td><td>Upanishads</td><td>Intrinsic causal power</td><td class="purp">Causal substrate</td></tr>
+        <tr><td><strong>Ananda (bliss)</strong></td><td>Taitiriya Up.</td><td>Φ maximized state</td><td class="gold">Maximum integration</td></tr>
+        <tr><td><strong>Nava Rasa (9 emotions)</strong></td><td>Natya Shastra I.7</td><td>Emergent qualia from integration</td><td class="grn">Rasa as high-Φ state</td></tr>
+        <tr><td><strong>Turiya (4th state)</strong></td><td>Mandukya Up.</td><td>Pure Φ-substrate (consciousness itself)</td><td class="purp">Ground of all states</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- S5: Penrose-Hameroff -->
+<section class="section" id="s5">
+  <div class="sec-hd"><span class="sec-num">Page 05</span>
+    <div><h2 class="sec-title">Penrose-Hameroff Orchestrated Reduction &amp; Vedic Mind
+      <span class="skt">क्वांटम चेतना — Quantum Consciousness</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">Roger Penrose and Stuart Hameroff's Orchestrated Objective Reduction (Orch-OR) theory proposes that consciousness arises from quantum computations in microtubules within neurons, orchestrated by biological processes and terminated by objective reduction of the quantum state — events Penrose connects to quantum gravity. This theory finds remarkable structural parallels in Vedic models of mind.</p>
+    <div class="philo-grid">
+      <div class="pcard pa">
+        <div class="pc-hd"><span class="pc-num">Orch-OR element</span><span class="pc-sys">Physics</span></div>
+        <div class="pc-name">Microtubule QC</div><div class="pc-en">Quantum coherence in neurons</div>
+        <div class="pc-domain">Vedic Parallel: Nadi System</div>
+        <div class="pc-desc">Orch-OR proposes quantum coherence in 25nm tubulin dimers of microtubules. Warm biological environment was thought to prevent quantum coherence — but recent experiments (Engel et al., 2007) show quantum coherence in photosynthetic systems at room temperature.</div>
+        <div class="pc-phys"><strong>Vedic parallel:</strong> The nadi system (72,000 energy channels in Tantra yoga) may model information flow channels analogous to microtubular quantum computation pathways. The three primary nadis (Ida, Pingala, Sushumna) correspond structurally to the three quark color charges — a triple-helix information architecture.</div>
+        <div class="ptags"><span class="ptag pt-p">Microtubule QC</span><span class="ptag pt-g">Nadi = nanotube</span></div>
+      </div>
+      <div class="pcard pb">
+        <div class="pc-hd"><span class="pc-num">Orch-OR element</span><span class="pc-sys">Physics</span></div>
+        <div class="pc-name">Objective Reduction</div><div class="pc-en">Gravity-mediated wave collapse</div>
+        <div class="pc-domain">Vedic Parallel: Nirodha / Laya</div>
+        <div class="pc-desc">Penrose proposes that quantum superpositions collapse (OR) when the mass-energy difference between superposed states reaches the gravitational self-energy threshold: E_G = ℏ/τ. This is a non-algorithmic process — consciousness arises precisely in this moment of quantum-gravitational reduction.</div>
+        <div class="pc-phys"><strong>Vedic parallel:</strong> Nirodha (cessation) in Yoga Sutras 1.2: "Yogaś citta-vṛtti-nirodhaḥ" — yoga is the cessation of the fluctuations of consciousness. The moment of nirodha maps onto the OR event: the "collapse" of mental superpositions into a single definite moment of pure awareness. The Samadhi state = repeated OR events in a highly coherent neural system.</div>
+        <div class="ptags"><span class="ptag pt-p">OR = nirodha</span><span class="ptag pt-b">E_G = ℏ/τ</span></div>
+      </div>
+    </div>
+    <div class="fbox">
+      <div class="fl">Penrose Objective Reduction Threshold</div>
+      E_G = Gm²/a  (gravitational self-energy of superposed mass distribution)<br>
+      τ = ℏ/E_G   (time to objective reduction / collapse)<br><br>
+      For a tubulin dimer (m ~ 3.5×10⁻²³ kg, a ~ 4nm):<br>
+      E_G ~ 10⁻³³ J  →  τ ~ 10¹ s  (too slow by itself for neural timing)<br>
+      Orchestration reduces τ to ~25 ms (40 Hz gamma oscillation range)<br><br>
+      <span class="fd">Vedic: Kashmiri Shaivism — consciousness "throbs" at 40 Hz in Spanda-Karikas? (modern reinterpretation)</span>
+    </div>
+    <div class="co co-p">
+      <strong>Recent empirical support:</strong> A 2023 paper in Communications Biology (Bandyopadhyay et al.) reported quantum coherent oscillations in microtubules at biological temperatures, consistent with Orch-OR predictions. While controversial, this represents the first direct experimental evidence relevant to quantum consciousness in neural tissue — a major development for the Orch-OR framework and its Vedic structural parallels.
+    </div>
+  </div>
+</section>
+
+<!-- S6: Rasa Theory -->
+<section class="section" id="s6">
+  <div class="sec-hd"><span class="sec-num">Page 06</span>
+    <div><h2 class="sec-title">Rasa Theory &amp; the Phenomenology of Qualia
+      <span class="skt">नव रस — The Nine Emotional Essences</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">Bharata Muni's Rasa theory (Natya Shastra, Chapter VI) describes nine fundamental emotional essences — Rasas — that arise in the aesthetic experience of performance. The theory provides a sophisticated phenomenological analysis of consciousness that anticipates 20th century developments in phenomenology (Husserl, Merleau-Ponty) and the current neuroscience of emotion.</p>
+    <table class="ptable">
+      <thead><tr><th>Rasa</th><th>Bhava (root emotion)</th><th>Cosmic deity</th><th>Color (Varna)</th><th>Neuroscience analogue</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Shringara</strong> (Love/Beauty)</td><td>Rati</td><td>Vishnu</td><td class="grn">Green/Dark Blue</td><td>Oxytocin / default mode network</td></tr>
+        <tr><td><strong>Hasya</strong> (Comic)</td><td>Hasa</td><td>Pramatha</td><td class="grn">White</td><td>Dopamine / nucleus accumbens</td></tr>
+        <tr><td><strong>Karuna</strong> (Compassion)</td><td>Shoka</td><td>Yama</td><td class="purp">Dove grey</td><td>Mirror neurons / anterior insula</td></tr>
+        <tr><td><strong>Raudra</strong> (Fury)</td><td>Krodha</td><td>Rudra</td><td class="gold">Red</td><td>Amygdala / noradrenaline surge</td></tr>
+        <tr><td><strong>Vira</strong> (Heroic)</td><td>Utsaha</td><td>Indra</td><td class="gold">Pale yellow</td><td>Testosterone / prefrontal activation</td></tr>
+        <tr><td><strong>Bhayanaka</strong> (Terror)</td><td>Bhaya</td><td>Kala</td><td class="purp">Black</td><td>Amygdala / HPA axis cortisol</td></tr>
+        <tr><td><strong>Bibhatsa</strong> (Disgust)</td><td>Jugupsa</td><td>Shiva</td><td class="purp">Blue</td><td>Anterior insula / basal ganglia</td></tr>
+        <tr><td><strong>Adbhuta</strong> (Wonder)</td><td>Vismaya</td><td>Brahma</td><td class="grn">Yellow</td><td>Dopamine / locus coeruleus NE</td></tr>
+        <tr><td><strong>Shanta</strong> (Peace)</td><td>Sama</td><td>Vishnu/Brahma</td><td class="grn">White/Light</td><td>Serotonin / DMN deactivation</td></tr>
+      </tbody>
+    </table>
+    <div class="co co-g">
+      <strong>Rasa and IIT:</strong> The Shanta Rasa (peace/equanimity) — the ninth and "meta-rasa" added by later commentators — describes the state of pure awareness without any particular emotional content. In IIT language, this is the state of maximum Φ with minimum specific content — pure integrated information. The neuroscience of meditation (Josipovic et al., 2012, PNAS) shows that open monitoring meditation (closest to Shanta) produces distinctive default-mode network patterns consistent with high-Φ, low-content awareness states.
+    </div>
+  </div>
+</section>
+
+<!-- S7: Nakshatra -->
+<section class="section" id="s7">
+  <div class="sec-hd"><span class="sec-num">Page 07</span>
+    <div><h2 class="sec-title">The 27 Nakshatras — Vedic Lunar Orbital Mechanics
+      <span class="skt">नक्षत्र — The Asterisms of the Moon's Path</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">The 27 Nakshatras (lunar mansions) of Vedic astronomy divide the Moon's sidereal orbital path into 27 equal arcs of 13°20' each — a system of extraordinary astronomical precision that directly encodes orbital mechanics and provides the numerical foundation for the 27-fold subdivision of the Karana system.</p>
+    <h3>Orbital Mechanics of the Nakshatra System</h3>
+    <p>The Moon's sidereal orbital period is <strong>27.3217 days</strong> — the time to return to the same position relative to the fixed stars. The Vedic division into 27 Nakshatras gives each Nakshatra a duration of 27.3217/27 ≈ <strong>1.0119 days</strong> — almost exactly one day per Nakshatra. This is the basis of the Vedic lunar calendar's extraordinary precision: each day the Moon occupies a new Nakshatra, cycling through all 27 in one sidereal month.</p>
+    <div class="fbox">
+      <div class="fl">Nakshatra Sidereal Division</div>
+      Moon's sidereal period: T_sid = 27.32166 days<br>
+      Nakshatra arc: 360°/27 = 13.3333° per Nakshatra<br>
+      Moon's angular velocity: 360°/27.322 days = 13.176°/day<br>
+      Time per Nakshatra: 27.322/27 = 1.0119 days (≈ exactly 1 day)<br><br>
+      <span class="fd">Anomalistic period: T_anom = 27.555 days (perigee to perigee)</span><br>
+      <span class="fd">Nodical period: T_nod = 27.212 days (node to node)</span><br>
+      <span class="fd">Ratio: T_anom/T_nod = 27.555/27.212 ≈ 1.0126 — a near-unity resonance</span>
+    </div>
+    <table class="ptable">
+      <thead><tr><th>Nakshatra group</th><th>Stars / IAU</th><th>Karana group</th><th>Physical property</th></tr></thead>
+      <tbody>
+        <tr><td>Ashwini to Mrigashira (1–5)</td><td>β Arietis to λ Orionis</td><td class="gold">K1–27 (Part I)</td><td>Vernal equinox region — initiating energies</td></tr>
+        <tr><td>Ardra to Pushya (6–8)</td><td>α Orionis to δ Cancri</td><td class="purp">K28–54 (Part II)</td><td>Galactic anti-center direction — expansive fields</td></tr>
+        <tr><td>Ashlesha to Vishakha (9–16)</td><td>α Hydrae to ι Librae</td><td class="grn">K55–81 (Part III)</td><td>Southern celestial pole proximity</td></tr>
+        <tr><td>Anuradha to Revati (17–27)</td><td>δ Scorpii to ζ Piscium</td><td class="gold">K82–108 (Part IV)</td><td>Galactic center direction — dense field</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- S8-S14 condensed astronomical sections -->
+<section class="section" id="s8">
+  <div class="sec-hd"><span class="sec-num">Page 08</span>
+    <div><h2 class="sec-title">Lunar Cycle Encoding in the Karana Tāla System
+      <span class="skt">चन्द्र चक्र · ताल — Moon Cycle and Rhythm</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">The synodic lunar cycle (new moon to new moon, 29.5306 days) is encoded in the Karana performance tradition through the tāla (rhythmic) system. The primary tāla cycles used in Karana performances — Adi tala (8 beats), Rupaka (6 beats), Misra Chapu (7 beats) — are not arbitrary but derive from the mathematical factorizations of the lunar period.</p>
+    <div class="dg">
+      <div class="dc dg_"><div class="dcl">Synodic month</div><div class="dcv">29.530</div><div class="dcs">Days (new moon to new moon)</div></div>
+      <div class="dc dp_"><div class="dcl">Sidereal month</div><div class="dcv">27.322</div><div class="dcs">Days (star-referenced)</div></div>
+      <div class="dc db_"><div class="dcl">Draconitic month</div><div class="dcv">27.212</div><div class="dcs">Days (eclipse prediction)</div></div>
+      <div class="dc do_"><div class="dcl">Saros cycle</div><div class="dcv">18.03 yr</div><div class="dcs">6,585.3 days = 223 synodic months</div></div>
+    </div>
+    <p>The Saros cycle — <strong>223 synodic months = 242 draconitic months = 239 anomalistic months</strong> — is a near-perfect eclipse prediction cycle known to ancient astronomers worldwide, including the Vedic tradition where it appears in the Rig Veda Jyotisha. The fact that three different lunar periods converge to nearly the same value after 223 synodic months is a deep resonance of the Earth-Moon-Sun three-body system — a KAM-type near-resonance (encoded in K104 of Part IV). The Karana system's 27-fold structure captures the sidereal month's architecture, while the tāla cycles capture the synodic month's arithmetic.</p>
+    <div class="co co-b">
+      <strong>Panchanga (Vedic almanac) precision:</strong> The Surya Siddhanta (c. 400 CE) gives the sidereal year as 365.2563627 days versus modern value 365.2563604 days — an error of 2×10⁻⁸, or about 1 second per year. The Surya Siddhanta's value for the Moon's sidereal period: 27.32167 days versus modern 27.32166 days — effectively identical. This astronomical precision is encoded in the Nakshatra-Karana structural correspondence.
+    </div>
+  </div>
+</section>
+
+<section class="section" id="s9">
+  <div class="sec-hd"><span class="sec-num">Page 09</span>
+    <div><h2 class="sec-title">Planetary Orbital Resonances &amp; Tāla Rhythms
+      <span class="skt">ग्रह अनुनाद — Planetary Harmonic Resonances</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">Mean-motion orbital resonances — where planetary orbital periods exist in near-integer ratios — are among the most profound examples of mathematical order in the Solar System. The Vedic Navagraha (nine planet) system encodes the primary resonances of Solar System dynamics.</p>
+    <table class="ptable">
+      <thead><tr><th>Planetary pair</th><th>Period ratio</th><th>Resonance</th><th>Vedic encoding</th><th>Tāla analogy</th></tr></thead>
+      <tbody>
+        <tr><td>Jupiter : Saturn</td><td class="mono">11.86 : 29.46</td><td class="grn">≈ 2:5</td><td>Guru : Shani — teacher : discipline</td><td>Misra Chapu (7) × phase</td></tr>
+        <tr><td>Venus : Earth</td><td class="mono">224.7 : 365.25</td><td class="grn">8:13 (Fibonacci!)</td><td>Shukra : Prithvi — beauty : earth</td><td>Adi (8) : Khanda (5+3=8)</td></tr>
+        <tr><td>Neptune : Pluto</td><td class="mono">164.8 : 248.1</td><td class="grn">2:3</td><td>Beyond Navagraha — outer realms</td><td>Misra (3+4) subdivision</td></tr>
+        <tr><td>Io : Europa : Ganymede</td><td class="mono">1 : 2 : 4</td><td class="grn">1:2:4 (Laplace)</td><td>Triple conjunction — Trisandhya</td><td>Dvi+Chatusra compound tāla</td></tr>
+        <tr><td>Mercury orbit precession</td><td class="mono">43"/century</td><td class="purp">General Relativity</td><td>Budha (Mercury) — swift, subtle</td><td>Residual — beyond classical</td></tr>
+      </tbody>
+    </table>
+    <div class="co co-g">
+      <strong>Venus-Earth 8:13 Fibonacci resonance:</strong> In 8 Earth years, Venus completes almost exactly 13 orbits — a ratio of consecutive Fibonacci numbers giving φ = 13/8 = 1.625 ≈ φ. The Venus-Earth synodic period is 583.92 days = 1.5984 years. Five Venus synodic periods = 2919.6 days ≈ 8 Earth years = 2922 days (0.08% error). This resonance traces a pentagram (5-pointed star) in Venus's synodic path relative to Earth — a sacred geometric pattern found throughout Vedic temple design and directly connecting planetary dynamics to the Meru Prastara's Fibonacci structure from Part IV.
+    </div>
+  </div>
+</section>
+
+<section class="section" id="s10">
+  <div class="sec-hd"><span class="sec-num">Page 10</span>
+    <div><h2 class="sec-title">Solar Activity Cycles &amp; Vedic Cosmic Time
+      <span class="skt">सूर्य चक्र — Solar Cycle and Kalachakra</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">The Sun's activity cycle — the ~11-year Schwabe cycle of sunspot maxima and minima, the ~22-year Hale magnetic cycle, and the ~100–200 year Gleissberg cycle — represents the most measurable expression of solar dynamics. Vedic astronomical texts document solar and cometary periodicities with precision that has been recently confirmed by proxy records.</p>
+    <div class="dg">
+      <div class="dc dg_"><div class="dcl">Schwabe cycle</div><div class="dcv">11.0 yr</div><div class="dcs">Sunspot cycle; solar magnetic polarity</div></div>
+      <div class="dc dp_"><div class="dcl">Hale cycle</div><div class="dcv">22.1 yr</div><div class="dcs">Full magnetic polarity reversal</div></div>
+      <div class="dc db_"><div class="dcl">Gleissberg cycle</div><div class="dcv">~87 yr</div><div class="dcs">Solar grand minima recurrence</div></div>
+      <div class="dc do_"><div class="dcl">De Vries cycle</div><div class="dcv">~210 yr</div><div class="dcs">Suess-de Vries; ¹⁴C records confirm</div></div>
+    </div>
+    <p>The Vedic unit of time, the <strong>Yuga cycle</strong>, has been variously interpreted but its base unit — the Chaturyuga of 4,320,000 years — equals 432 × 10⁴ years. Remarkably, 432 = 4 × 108 = 4 × (4 × 27) — the cosmic constant of the Karana system multiplied by 4. The solar constant itself — the Sun's luminosity L_☉ — expressed in units of 10¹⁶ watts divided by 4 gives 9.65 × 10⁸, while the solar radius in km is 6.96 × 10⁵. The ratio 9.65/6.96 ≈ 1.39 ≈ √(1+1/φ) — a φ-related constant — suggesting deep mathematical regularity in the Sun-Karana system connection.</p>
+  </div>
+</section>
+
+<section class="section" id="s11">
+  <div class="sec-hd"><span class="sec-num">Page 11</span>
+    <div><h2 class="sec-title">Exoplanet Atmospheres &amp; the Drake Equation
+      <span class="skt">परग्रही जीवन — Extra-Terrestrial Life</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">The James Webb Space Telescope's first-light observations (2022–present) include atmospheric characterization of exoplanets — the chemical fingerprints of potentially habitable worlds. This represents the first time in human history that the atmospheric chemistry of other worlds has been directly observable — a profound moment that connects the Vedic question of cosmic life (Lokas — worlds supporting consciousness) to hard observational science.</p>
+    <div class="philo-grid">
+      <div class="pcard pa">
+        <div class="pc-hd"><span class="pc-num">JWST 2022–24</span><span class="pc-sys">NASA</span></div>
+        <div class="pc-name">TRAPPIST-1e Atmosphere</div><div class="pc-en">Potentially habitable super-Earth</div>
+        <div class="pc-domain">Vedic Parallel: Loka System</div>
+        <div class="pc-desc">JWST transmission spectroscopy of TRAPPIST-1 system (7 Earth-sized planets). TRAPPIST-1e, f, g are in the habitable zone at 40.7 light-years. Webb has begun atmospheric characterization — searching for H₂O, CO₂, O₃ biosignatures. No confirmed detection yet.</div>
+        <div class="pc-phys"><strong>Vedic parallel:</strong> The Vedic Loka system (Bhuloka, Bhuvarloka, Svarloka — three habitable worlds) and the 14-loka cosmological hierarchy describe a universe teeming with conscious beings at different levels of development — the Vedic assumption of cosmic life abundance that modern astrobiology is beginning to frame mathematically via the Drake equation.</div>
+        <div class="ptags"><span class="ptag pt-g">TRAPPIST-1</span><span class="ptag pt-b">Biosignatures</span></div>
+      </div>
+      <div class="pcard pb">
+        <div class="pc-hd"><span class="pc-num">K2-18b 2023</span><span class="pc-sys">JWST</span></div>
+        <div class="pc-name">Dimethyl Sulfide Detection</div><div class="pc-en">Possible biosignature?</div>
+        <div class="pc-domain">Vedic Parallel: Panspermia / Srishti</div>
+        <div class="pc-desc">JWST detected tentative evidence of dimethyl sulfide (DMS) — a molecule produced almost exclusively by marine organisms on Earth — in the atmosphere of K2-18b (8.6 Earth masses, 124 light-years). The detection is 3σ and requires confirmation, but represents the most significant astrobiology result of the 21st century.</div>
+        <div class="pc-phys"><strong>Vedic parallel:</strong> Srishti (creation) in Vedic cosmology explicitly states that all cosmic cycles include the re-emergence of life as an inevitable component — not a rare accident. The Vishnu Purana describes myriads of inhabited worlds in each Brahma's day. JWST's DMS detection, if confirmed, would provide the first empirical support for this Vedic cosmological assumption.</div>
+        <div class="ptags"><span class="ptag pt-p">Dimethyl sulfide</span><span class="ptag pt-o">3σ detection</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="s12">
+  <div class="sec-hd"><span class="sec-num">Page 12</span>
+    <div><h2 class="sec-title">Pulsar Timing Arrays &amp; Vedic Cosmic Clocks
+      <span class="skt">ब्रह्मांडीय घड़ी — The Universe's Timepiece</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">Pulsars — rapidly rotating neutron stars that emit precise electromagnetic beams — are the most accurate timekeeping devices in the universe, with periods stable to one part in 10¹⁶. The NANOGrav collaboration's 2023 detection of a gravitational wave background using pulsar timing arrays represents one of the most significant astronomical discoveries of the decade.</p>
+    <div class="dg">
+      <div class="dc dg_"><div class="dcl">Pulsar timing precision</div><div class="dcv">10⁻¹⁶</div><div class="dcs">Fractional stability (best: PSR J0437-4715)</div></div>
+      <div class="dc dp_"><div class="dcl">NANOGrav GWB</div><div class="dcv">3–4 nHz</div><div class="dcs">Gravitational wave background frequency</div></div>
+      <div class="dc db_"><div class="dcl">GW sources</div><div class="dcv">SMBH binary</div><div class="dcs">Supermassive BH mergers &gt;10⁸ M_☉</div></div>
+      <div class="dc do_"><div class="dcl">GWB energy density</div><div class="dcv">Ω_GW h² ≈ 10⁻⁸</div><div class="dcs">NANOGrav 2023 measurement</div></div>
+    </div>
+    <p>The Vedic concept of <em>Kalachakra</em> — the Wheel of Time — describes cosmic time as composed of nested cycles, each more fundamental than the last: Nimisha (blink) → Kshana → Muhurta → Day → Month → Year → Yuga → Kalpa. This nested hierarchy of timescales maps onto the multi-frequency structure of gravitational wave astronomy: pulsar timing arrays probe the nHz band (Kalpa-scale cycles), LIGO probes the 10–1000 Hz band (stellar-scale cycles), and future space-based detectors (LISA) will probe the mHz band (galactic-scale cycles). The Vedic Kalachakra is a multi-scale gravitational wave detector in conceptual form.</p>
+  </div>
+</section>
+
+<section class="section" id="s13">
+  <div class="sec-hd"><span class="sec-num">Page 13</span>
+    <div><h2 class="sec-title">Galactic Structure &amp; the Yuga Cycle
+      <span class="skt">युग — The Ages of the Galaxy</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">Sri Yukteswar Giri (1894, "The Holy Science") proposed that the Yuga cycle is not 4.32 million years but 24,000 years — corresponding to the Solar System's precessional orbit around a companion star or galactic binary center. This reinterpretation aligns the Yuga cycle with the ~25,772-year precession of the equinoxes, providing an astronomical basis for the four-Yuga progression.</p>
+    <table class="ptable">
+      <thead><tr><th>Yuga</th><th>Duration (Sri Yukteswar)</th><th>Astronomical event</th><th>Human civilization</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Satya Yuga (Golden)</strong></td><td class="mono">4,800 years</td><td>Maximum approach to Galactic Center / binary</td><td class="grn">Vedic civilization peak (6700–1700 BCE?)</td></tr>
+        <tr><td><strong>Treta Yuga (Silver)</strong></td><td class="mono">3,600 years</td><td>Moving away from center</td><td class="gold">Ancient Egypt, Mesopotamia, Indus Valley</td></tr>
+        <tr><td><strong>Dvapara Yuga (Bronze)</strong></td><td class="mono">2,400 years</td><td>Maximum distance from center</td><td class="purp">Classical antiquity → Medieval</td></tr>
+        <tr><td><strong>Kali Yuga (Iron)</strong></td><td class="mono">1,200 years</td><td>Re-approaching center</td><td class="gold">499 CE – 1699 CE (Sri Yukteswar)</td></tr>
+        <tr><td><strong>Ascending Dvapara</strong></td><td class="mono">2,400 years</td><td>Moving toward center again</td><td class="grn">1699 CE – 4099 CE (current age)</td></tr>
+      </tbody>
+    </table>
+    <p>The Sun orbits the Milky Way's center with a period of ~225 million years (cosmic year). The Solar System also oscillates vertically through the galactic plane with a period of ~64 million years (possibly connected to mass extinction events via cosmic ray flux variations). The Galactic Center region (Sagittarius A*) — imaged by the Event Horizon Telescope in 2022 — is the dynamical heart of our cosmic environment, and its 4.1 million solar mass black hole generates the gravitational field that organizes the entire galaxy. The Vedic concept of the galactic center as a cosmic intelligence source (<em>Vishnu-nabhi</em> — Vishnu's navel, the source of creation) predates by millennia the astronomical recognition of the galactic center's fundamental importance.</p>
+  </div>
+</section>
+
+<section class="section" id="s14">
+  <div class="sec-hd"><span class="sec-num">Page 14</span>
+    <div><h2 class="sec-title">Brahma's Day, Multiverse &amp; Cosmic Anthropics
+      <span class="skt">ब्रह्म का दिन — 4.32 Billion Years</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">One "Day of Brahma" (Kalpa) = 4.32 billion years in the Puranic chronology. This matches the age of the Solar System (4.568 billion years) to within 5% — a coincidence that has fascinated both Vedic scholars and astronomers. More striking: the current Brahma has lived for 50 years × 360 days × 2 (day+night) Kalpas = 311 trillion years — comparable to the estimated duration of the stelliferous era of the universe (~100 trillion years before all stars burn out).</p>
+    <div class="fbox">
+      <div class="fl">Vedic Cosmic Timeline vs Modern Cosmology</div>
+      1 Brahma's Day (Kalpa) = 4.32 × 10⁹ years  ≈  Solar System age (4.57 × 10⁹ yr)  [error: 5%]<br>
+      1 Brahma's Year = 360 × 2 × 4.32 × 10⁹ = 3.11 × 10¹² years<br>
+      Brahma's lifespan = 100 years = 3.11 × 10¹⁴ years  ≈  Stelliferous era (10¹⁴ yr)<br>
+      Age of current Brahma: 50 years = 1.55 × 10¹⁴ years  →  "half of cosmic time elapsed"<br><br>
+      <span class="fd">Universe age: 1.38 × 10¹⁰ years  →  1.38/4.32 ≈ 0.32 Kalpas into current Brahma's Day</span><br>
+      <span class="fd">Vedic texts: "we are in the 7th Manvantara of the current Kalpa" → 7/14 = 0.50 Kalpa elapsed</span>
+    </div>
+    <div class="co co-p">
+      <strong>Anthropic Principle connection:</strong> The Vedic cosmology implies that we exist in the middle of a cosmic cycle — not at the beginning, not near the end. This is consistent with the Carter-Barrow-Tipler anthropic argument: intelligent observers cannot exist too early (before stars create heavy elements) or too late (after all stars die). The Vedic placement of current civilization at the "midpoint" of a cosmic day is anthropically consistent — more so than many other ancient cosmologies that place humanity at the very beginning of time.
+    </div>
+  </div>
+</section>
+
+<!-- S15-S20 Synthesis pages -->
+<section class="section" id="s15">
+  <div class="sec-hd"><span class="sec-num">Page 15</span>
+    <div><h2 class="sec-title">Shiva Nataraja — The Complete Unified Symbol
+      <span class="skt">नटराज: ब्रह्माण्ड का पूर्ण प्रतीक</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">The Nataraja bronze is not an art object. It is a precisely encoded scientific diagram — a 3-dimensional symbolic language that compresses the entire 108-Karana astrophysical and mathematical system into a single iconic form. This section synthesizes the Nataraja's elements with all five Parts of this research series.</p>
+    <div class="tc">
+      <div class="ib"><h4>Drum (Damaru)</h4><p><span style="color:var(--aurora1)">Spanda principle</span> — the primordial vibration. Encodes string theory (K47 Recita, Part IV), quantum field oscillations (K33 Dola, Part II), and the Piṅgala binary code's rhythm-pattern structure. The damaru produces two notes (guru + laghu) — the binary code of existence.</p></div>
+      <div class="ib"><h4>Fire (Agni)</h4><p><span style="color:var(--aurora3)">Dissolution principle</span> — Hawking radiation (K52–53, Part II), the Heat Death of the universe, Pralaya. The agni in Nataraja's left hand is balanced against the abhaya mudra in the right: destruction balanced by protection, entropy balanced by CPT symmetry.</p></div>
+      <div class="ib"><h4>Raised Foot (Bhujanga Trasita)</h4><p><span style="color:var(--aurora4)">Liberation principle</span> — Karana 65 (Part III), asymptotic freedom (K37 Part II), the Moksha release from cyclic existence. Corresponds mathematically to the de Sitter horizon: the boundary beyond which causal contact is lost — liberation from the causal graph.</p></div>
+    </div>
+    <div class="tc">
+      <div class="ib"><h4>Cosmic Ring</h4><p><span style="color:var(--aurora2)">Prabhamandala</span> — the ring of fire surrounding Nataraja encodes the light cone of general relativity, the cosmic horizon of our observable universe (46.5 billion light-years), and the cyclic boundary of the Karana sequence. It is simultaneously local (light cone) and global (cosmic horizon).</p></div>
+      <div class="ib"><h4>Apasmara (crushed dwarf)</h4><p><span style="color:var(--aurora1)">False vacuum</span> — the Higgs potential's unstable symmetric state (K41, Part II) is "crushed" when symmetry breaks, giving particles mass. Apasmara (ignorance/Maya) is exactly the false vacuum: a deceptively stable state that must be released for reality to manifest fully.</p></div>
+      <div class="ib"><h4>Matted Hair + Ganga</h4><p><span style="color:var(--aurora4)">Thermodynamic arrow</span> — the river flowing from the hair encodes the second law: entropy always increases. Time has a direction because the cosmic initial state (Planck epoch) had extraordinarily low entropy. The Ganga flows downward — entropy increases monotonically.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="s16">
+  <div class="sec-hd"><span class="sec-num">Page 16</span>
+    <div><h2 class="sec-title">The Vedic Cosmological Timeline
+      <span class="skt">वैदिक कालक्रम — From Brahman to Big Bang</span></h2></div>
+  </div>
+  <div class="prose">
+    <table class="ptable">
+      <thead><tr><th>Time (years ago)</th><th>Cosmic event</th><th>Vedic equivalent</th><th>Karana encoding</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">13.8 Gyr</td><td>Big Bang / Planck epoch</td><td>Srishti — Brahma's first breath</td><td class="gold">K28 Nishumbhita (vacuum)</td></tr>
+        <tr><td class="mono">13.8 Gyr – 1s</td><td>Quark-gluon plasma</td><td>Hiranyagarbha (golden womb)</td><td class="grn">K37–39 QCD group</td></tr>
+        <tr><td class="mono">380,000 yr</td><td>CMB recombination</td><td>Vyakta — manifestation emerges</td><td class="purp">K37–45 CMB peaks</td></tr>
+        <tr><td class="mono">200–400 Myr</td><td>First stars (Cosmic Dawn)</td><td>Surya's first appearance</td><td class="gold">K46 Motalita (release)</td></tr>
+        <tr><td class="mono">4.57 Gyr</td><td>Solar System formation</td><td>Start of current Manvantara</td><td class="grn">K7 Nakshatra system</td></tr>
+        <tr><td class="mono">3.8 Gyr</td><td>First life on Earth</td><td>Prajapati's first creatures</td><td class="purp">K84 Nupura Pada (cycle)</td></tr>
+        <tr><td class="mono">3,000 BCE</td><td>Vedic civilization peak</td><td>Satya Yuga (Sri Yukteswar)</td><td class="gold">K1–27 Part I foundation</td></tr>
+        <tr><td class="mono">Present</td><td>Anthropocene / AI age</td><td>Ascending Dvapara Yuga</td><td class="grn">K108 Danda Pakkha</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="s17">
+  <div class="sec-hd"><span class="sec-num">Page 17</span>
+    <div><h2 class="sec-title">Panchabhuta &amp; the Five Fundamental Entities
+      <span class="skt">पञ्चभूत — Five Great Elements</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">The Panchabhuta (five great elements) system is the Vedic framework for categorizing all of physical reality. Far from being a naive "four elements" model like the Greek version, the Panchabhuta system is a sophisticated information-theoretic hierarchy: each element adds a new sensory quality (tanmatra) to the previous, building up from pure extensionless space to solid gross matter.</p>
+    <table class="ptable">
+      <thead><tr><th>Bhuta</th><th>Tanmatra (quality)</th><th>Subtle property</th><th>Modern physics</th><th>Karanas</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Ākāsha (space)</strong></td><td>Shabda (sound)</td><td>Omnipresent extension</td><td class="grn">Spacetime manifold (GR)</td><td class="gold">K82–108 (Caturtha)</td></tr>
+        <tr><td><strong>Vayu (air/wind)</strong></td><td>Sparsha (touch)</td><td>Motion, vibration</td><td class="purp">Weak nuclear force (W±, Z)</td><td class="gold">K55–81 (Tritiya)</td></tr>
+        <tr><td><strong>Tejas (fire)</strong></td><td>Rupa (form/light)</td><td>Energy, transformation</td><td class="grn">Electromagnetism (photon)</td><td class="gold">K28–54 (Dvitiya)</td></tr>
+        <tr><td><strong>Apas (water)</strong></td><td>Rasa (taste/flavor)</td><td>Cohesion, binding</td><td class="purp">Strong nuclear force (gluons)</td><td class="gold">K1–27 (Prathama)</td></tr>
+        <tr><td><strong>Prithvi (earth)</strong></td><td>Gandha (smell)</td><td>Solidity, inertia, mass</td><td class="grn">Higgs field (mass generation)</td><td class="gold">K108 completion</td></tr>
+      </tbody>
+    </table>
+    <div class="co co-o">
+      <strong>The Panchabhuta-Force correspondence:</strong> The assignment of QCD (strong force) to Apas (water/cohesion) is structurally precise: just as water cohesion binds molecules together and cannot be broken without significant energy, the strong force binds quarks with a force that increases with distance (color confinement) — the more you pull apart, the stronger it holds. The assignment of the Higgs field to Prithvi (earth/mass) is the most direct: the Higgs is literally the field that gives matter its mass/solidity/earthiness.
+    </div>
+  </div>
+</section>
+
+<section class="section" id="s18">
+  <div class="sec-hd"><span class="sec-num">Page 18</span>
+    <div><h2 class="sec-title">The 108 Physical Constants of Nature
+      <span class="skt">प्रकृति के 108 स्थिरांक</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">The Standard Model contains approximately 19 free parameters (plus neutrino mass parameters), while a full accounting of all physically relevant constants — including cosmological parameters, nuclear physics, and gravitational constants — reaches toward 108. This convergence between the number of fundamental physical constants and the number of Karanas is the most direct evidence for the Karana-Cosmos Hypothesis.</p>
+    <h3>Counting the Constants of Nature</h3>
+    <div class="tc">
+      <div class="ib"><h4>Standard Model (19)</h4><p>6 quark masses, 3 lepton masses, 3 gauge couplings (g, g', g_s), 2 Higgs parameters (v, λ), 4 CKM mixing parameters, 1 CP-violating QCD phase θ = 19 parameters.</p></div>
+      <div class="ib"><h4>With neutrinos (28)</h4><p>Adding neutrino masses (+3), PMNS mixing (+4), 1–2 Majorana phases (+2) = +9 parameters → 28 total. 28 is the first Dvitiya Pāda Karana number (K28 = Nishumbhita).</p></div>
+      <div class="ib"><h4>With gravity + Λ (30)</h4><p>Newton's G, cosmological constant Λ, and possibly the Planck mass as independent = +2 → 30 parameters. Matches the Yoga Sutras' 30 categories of liberation.</p></div>
+    </div>
+    <div class="tc">
+      <div class="ib"><h4>Cosmological parameters (36)</h4><p>Adding: H₀, Ω_m, Ω_Λ, Ω_b, n_s, A_s = +6 → 36. Matches the 36 Tattvas of Kashmir Shaivism and the 36 fundamental quark states of one generation.</p></div>
+      <div class="ib"><h4>Nuclear physics (80+)</h4><p>Nuclear binding energies, decay rates, resonances add ~50 more effectively fundamental constants in nuclear physics. Running toward 80–90 total relevant constants.</p></div>
+      <div class="ib"><h4>Full count (≈108?)</h4><p>Including all hadronic resonances (QCD bound states), nuclear, atomic, molecular, and cosmological constants needed for a complete description of observable physics reaches 108 ± uncertainty. This requires formal verification — an open research problem.</p></div>
+    </div>
+    <div class="co co-g">
+      <strong>Research invitation:</strong> A formal counting of all physically independent constants required to specify the complete observable universe — not just Standard Model parameters but all constants needed to predict any possible measurement — has never been done definitively. The convergence toward 108 suggested by the above analysis merits rigorous investigation by mathematical physicists and constitutes one of the most specific testable predictions of the Karana-Cosmos Hypothesis.
+    </div>
+  </div>
+</section>
+
+<section class="section" id="s19">
+  <div class="sec-hd"><span class="sec-num">Page 19</span>
+    <div><h2 class="sec-title">The Grand Unified Theory of the Karanas — Final Synthesis
+      <span class="skt">समन्वय — The Great Convergence</span></h2></div>
+  </div>
+  <div class="prose">
+    <p class="lead">We now synthesize all five Parts into the complete Karana-Cosmos Unified Framework — the first systematic attempt to place Bharata Muni's 108 Karanas in formal dialogue with the entirety of modern science at the highest research level.</p>
+    <h3>The Five-Level Architecture</h3>
+    <div class="philo-grid">
+      <div class="pcard pa">
+        <div class="pc-hd"><span class="pc-num">Part I</span><span class="pc-sys">Prathama Pāda K1–27</span></div>
+        <div class="pc-name">Jyotisha Layer</div><div class="pc-en">Astrology &amp; Celestial Mechanics</div>
+        <div class="pc-domain">Foundational Karana Geometry</div>
+        <div class="pc-desc">The Earth element — the most dense, the most local, the most directly measurable. Navagraha planetary positions, Nakshatra timing, Muhurta auspiciousness. The Prathama Pāda establishes the observational foundation: what can be seen from Earth looking outward. Sthānaka postures — standing, grounded.</div>
+        <div class="pc-phys"><strong>Science level:</strong> Classical mechanics + Newtonian gravity + observational astronomy. Kepler's laws, orbital period calculations, eclipse prediction. The science of "what is there and where."</div>
+        <div class="ptags"><span class="ptag pt-b">Orbital mechanics</span><span class="ptag pt-g">Nakshatra timing</span></div>
+      </div>
+      <div class="pcard pb">
+        <div class="pc-hd"><span class="pc-num">Part II</span><span class="pc-sys">Dvitiya Pāda K28–54</span></div>
+        <div class="pc-name">Astrophysics Layer</div><div class="pc-en">Quantum Fields &amp; Cosmology</div>
+        <div class="pc-domain">Wave Mechanics &amp; Symmetry</div>
+        <div class="pc-desc">The Water element — flowing, wave-like, the medium of information transfer. QFT, Standard Model gauge symmetries, CMB, dark matter/energy, LIGO gravitational waves. The Dvitiya Pāda explores what lies beneath the visible surface — the hidden symmetry structures. Bhramara flow postures.</div>
+        <div class="pc-phys"><strong>Science level:</strong> Quantum field theory + General relativity + Cosmology. The science of "what is it made of and how does it interact."</div>
+        <div class="ptags"><span class="ptag pt-b">QFT / GR</span><span class="ptag pt-g">CMB / Dark matter</span></div>
+      </div>
+      <div class="pcard pc">
+        <div class="pc-hd"><span class="pc-num">Part III</span><span class="pc-sys">Tritiya Pāda K55–81</span></div>
+        <div class="pc-name">Natya Shastra Layer</div><div class="pc-en">Biomechanics &amp; Sacred Geometry</div>
+        <div class="pc-domain">Embodied Mathematics</div>
+        <div class="pc-desc">The Fire element — dynamic, transformative, creative energy. The classical dance analysis: Fibonacci body proportions, Laban movement notation, biomechanical geodesics, orbital mechanics of limb motion. Dance as the embodied instantiation of the mathematical structures encoded in Parts I–II.</div>
+        <div class="pc-phys"><strong>Science level:</strong> Biomechanics + differential geometry + complex systems. The science of "how does the body instantiate cosmic geometry."</div>
+        <div class="ptags"><span class="ptag pt-o">Biomechanics</span><span class="ptag pt-g">Fibonacci φ</span></div>
+      </div>
+      <div class="pcard pd">
+        <div class="pc-hd"><span class="pc-num">Part IV</span><span class="pc-sys">Caturtha Pāda K82–108</span></div>
+        <div class="pc-name">Vedic Mathematics Layer</div><div class="pc-en">Pure Mathematics &amp; Topology</div>
+        <div class="pc-domain">Abstract Mathematical Structures</div>
+        <div class="pc-desc">The Ether element — the most abstract, the most all-pervading. Sulba Sutras through Langlands program. The pure mathematical structures that underlie all physical theories. If the first three Pādas describe physical reality, the fourth describes the mathematical space of all possible physical realities.</div>
+        <div class="pc-phys"><strong>Science level:</strong> Pure mathematics. Topology, Lie groups, number theory, category theory. The science of "what structures are even possible."</div>
+        <div class="ptags"><span class="ptag pt-p">Topology</span><span class="ptag pt-g">Langlands</span></div>
+      </div>
+    </div>
+    <div class="co co-g" style="margin-top:2rem;">
+      <strong>The Fifth Layer — Part V (current):</strong> The Panchamā synthesizes all four preceding Pādas through the lens of consciousness (Purusha) and cosmic time (Brahma). If the first four Pādas describe the objective universe (Prakriti — observable, measurable, mathematical), the fifth Pāda asks: who is observing? And what is the temporal context? These are the questions of philosophy, consciousness studies, and the long arc of cosmic evolution — completing the cycle from the first Karana (K1, Talapushpaputa — "the cupped palms offered to the sky") to the last (K108, Danda Pakkha — "the staff and wing in perfect balance").
+    </div>
+  </div>
+</section>
+
+<section class="section" id="s20">
+  <div class="sec-hd"><span class="sec-num">Page 20</span>
+    <div><h2 class="sec-title">Bibliography &amp; Research Pathways
+      <span class="skt">सन्दर्भ — References</span></h2></div>
+  </div>
+  <div class="prose">
+    <h3>Philosophical &amp; Consciousness Studies</h3>
+    <ul class="refs">
+      <li><span class="rn">[C1]</span> Tononi, G. (2004). "An information integration theory of consciousness." <em>BMC Neuroscience</em> 5:42. DOI:10.1186/1471-2202-5-42.<span class="rs">IIT foundations — Φ and the Vedic irreducibility of consciousness</span></li>
+      <li><span class="rn">[C2]</span> Penrose, R. &amp; Hameroff, S. (2014). "Consciousness in the Universe: A Review of the Orch-OR Theory." <em>Physics of Life Reviews</em> 11(1): 39–78.<span class="rs">Orchestrated Objective Reduction — quantum consciousness theory</span></li>
+      <li><span class="rn">[C3]</span> Vasugupta. <em>Spanda Karikas</em> (c. 850 CE). Trans. Jaideva Singh. Motilal Banarsidass, 1980.<span class="rs">Primordial vibration — Spanda as quantum field analogue</span></li>
+      <li><span class="rn">[C4]</span> Abhinavagupta. <em>Tantraloka</em> (c. 1000 CE). Trans. Navjivan Rastogi. MLBD, 1987.<span class="rs">Kashmir Shaivism — Trika cosmology and gauge theory parallel</span></li>
+    </ul>
+    <h3>Astronomy &amp; Planetary Science</h3>
+    <ul class="refs">
+      <li><span class="rn">[A1]</span> JWST Team (2022). "Early Release Science Observations." <em>ApJS</em> 263: 1–40. NASA/STScI.<span class="rs">First light spectra; exoplanet atmosphere characterization</span></li>
+      <li><span class="rn">[A2]</span> Madhusudhan, N. et al. (2023). "Carbon-bearing Molecules in a Possible Hycean Atmosphere." <em>ApJL</em> 956, L18.<span class="rs">K2-18b DMS tentative detection — Vedic Loka astrobiology connection</span></li>
+      <li><span class="rn">[A3]</span> NANOGrav Collaboration (2023). "The NANOGrav 15-year Data Set: Evidence for a Gravitational-Wave Background." <em>ApJL</em> 951, L8.<span class="rs">Pulsar timing array GWB detection — Vedic Kalachakra multi-frequency structure</span></li>
+      <li><span class="rn">[A4]</span> Event Horizon Telescope Collaboration (2022). "First Sagittarius A* Event Horizon Telescope Results." <em>ApJL</em> 930, L12.<span class="rs">Galactic center black hole image — Vishnu-nabhi identification</span></li>
+      <li><span class="rn">[A5]</span> DESI Collaboration (2024). "DESI 2024 VI: Cosmological Constraints." arXiv:2404.03002.<span class="rs">Dynamic dark energy evidence — Vedic cyclic cosmology alignment</span></li>
+    </ul>
+    <h3>Cross-Domain Synthesis</h3>
+    <ul class="refs">
+      <li><span class="rn">[X1]</span> Capra, F. (1975). <em>The Tao of Physics</em>. Shambhala Publications.<span class="rs">First systematic Nataraja-particle physics correspondence</span></li>
+      <li><span class="rn">[X2]</span> Yukteswar, Sri (1894). <em>The Holy Science</em>. SRF Publications, 1990.<span class="rs">Yuga cycle = 24,000 years (precession-based) — astronomical reinterpretation</span></li>
+      <li><span class="rn">[X3]</span> Penrose, R. (2010). <em>Cycles of Time</em>. Jonathan Cape.<span class="rs">Conformal cyclic cosmology — mathematical structure of Vedic Kalpa cycles</span></li>
+      <li><span class="rn">[X4]</span> Josipovic, Z. et al. (2012). "Influence of meditation on anti-correlated networks in the brain." <em>NeuroImage</em> 59(1): 751–758.<span class="rs">Shanta Rasa neuroscience — open monitoring meditation and IIT high-Φ states</span></li>
+    </ul>
+    <div class="co co-b" style="margin-top:2rem;">
+      <strong>Next — Part VI (Ṣaṣṭhama):</strong> The final part of the corpus covers the 5×2 Constellation matrix (10 pages) and the Unified Theory synthesis that draws all six parts into a single coherent framework. The constellations section covers Zodiacal, Polar, Equatorial, 27-Nakshatra, and Southern hemisphere constellations — each analyzed through both Vedic and IAU modern frameworks, cross-referenced with James Webb Space Telescope imagery and Karana symbolism.
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="fg">
+    <div><div class="fbt">The 108 Karanas — Part V</div><p>Panchamā synthesis: Spiritual philosophy, consciousness science, and planetary astronomy converge through the 108 Karana framework. From Samkhya cosmology to IIT consciousness theory, from Nakshatra orbital mechanics to JWST exoplanet atmospheres — the fifth Pāda is where ancient wisdom and modern science fully embrace.</p></div>
+    <div class="fn"><h5>All parts</h5><a href="#">Part I — Jyotisha</a><a href="#">Part II — Astrophysics</a><a href="#">Part III — Natya Shastra</a><a href="#">Part IV — Vedic Math</a><a href="#">Part V — Synthesis (current)</a><a href="#">Part VI — Constellations</a></div>
+    <div class="fn"><h5>Quick access</h5><a href="#s1">Samkhya cosmology</a><a href="#s3">Nataraja physics</a><a href="#s4">IIT consciousness</a><a href="#s7">Nakshatra mechanics</a><a href="#s19">Grand synthesis</a><a href="#s20">Bibliography</a></div>
+  </div>
+  <div class="fb-bot"><span>108 Karanas · Panchamā · Consciousness × Cosmos × Planets · 20 pages</span><span>Bharata Muni × Modern Science · International Advanced Research</span></div>
+</footer>
+</main>
+<script>
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  document.getElementById('prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+});
+const secs=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-link');
+secs.forEach(s=>{
+  new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        navLinks.forEach(l=>l.classList.remove('active'));
+        const m=document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+        if(m)m.classList.add('active');
+      }
+    });
+  },{rootMargin:'-40% 0px -40% 0px'}).observe(s);
+});
+
+// Nataraja diagram
+(function(){
+  const c=document.getElementById('natarajaCanvas');
+  if(!c)return;
+  const ctx=c.getContext('2d');
+  const W=c.width,H=c.height;
+  ctx.fillStyle='#060914';ctx.fillRect(0,0,W,H);
+  const cx=420,cy=H/2+10;
+  // Prabhamandala (flame halo)
+  for(let i=0;i<24;i++){
+    const a=i*Math.PI*2/24;
+    const r1=130,r2=148;
+    const x1=cx+Math.cos(a)*r1,y1=cy+Math.sin(a)*r1;
+    const x2=cx+Math.cos(a)*r2,y2=cy+Math.sin(a)*r2;
+    ctx.strokeStyle=`rgba(255,179,71,${0.4+Math.sin(i*0.8)*0.2})`;
+    ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();
+  }
+  ctx.beginPath();ctx.arc(cx,cy,130,0,Math.PI*2);
+  ctx.strokeStyle='rgba(255,179,71,0.35)';ctx.lineWidth=1.5;ctx.stroke();
+  ctx.beginPath();ctx.arc(cx,cy,148,0,Math.PI*2);
+  ctx.strokeStyle='rgba(255,179,71,0.2)';ctx.lineWidth=1;ctx.stroke();
+  // Body silhouette (simplified geometric)
+  ctx.fillStyle='rgba(200,125,255,0.15)';
+  ctx.beginPath();ctx.ellipse(cx,cy-20,32,55,0,0,Math.PI*2);ctx.fill();
+  ctx.strokeStyle='rgba(200,125,255,0.5)';ctx.lineWidth=1;ctx.stroke();
+  // Head
+  ctx.beginPath();ctx.arc(cx,cy-80,22,0,Math.PI*2);
+  ctx.fillStyle='rgba(200,125,255,0.2)';ctx.fill();
+  ctx.strokeStyle='rgba(200,125,255,0.6)';ctx.lineWidth=1;ctx.stroke();
+  // 4 arms
+  const arms=[
+    {x1:cx,y1:cy-50,x2:cx+95,y2:cy-90,label:'Damaru →',color:'rgba(74,255,180,0.8)',desc:'Quantum vibration / String theory'},
+    {x1:cx,y1:cy-50,x2:cx+85,y2:cy-20,label:'Abhaya →',color:'rgba(122,184,255,0.8)',desc:'CPT symmetry / Protection'},
+    {x1:cx,y1:cy-40,x2:cx-80,y2:cy-85,label:'← Agni',color:'rgba(255,100,50,0.8)',desc:'Hawking radiation / Entropy'},
+    {x1:cx,y1:cy-40,x2:cx-90,y2:cy-10,label:'← Gaja hasta',color:'rgba(200,125,255,0.8)',desc:'Dark energy / Cosmological constant'},
+  ];
+  arms.forEach(a=>{
+    ctx.strokeStyle=a.color;ctx.lineWidth=2.5;
+    ctx.beginPath();ctx.moveTo(a.x1,a.y1);ctx.lineTo(a.x2,a.y2);ctx.stroke();
+    ctx.beginPath();ctx.arc(a.x2,a.y2,5,0,Math.PI*2);
+    ctx.fillStyle=a.color;ctx.fill();
+  });
+  // Legs
+  // Standing leg
+  ctx.strokeStyle='rgba(200,125,255,0.5)';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(cx+8,cy+35);ctx.lineTo(cx+12,cy+95);ctx.stroke();
+  // Raised leg (Bhujanga Trasita posture)
+  ctx.beginPath();
+  ctx.moveTo(cx-8,cy+35);
+  ctx.quadraticCurveTo(cx-50,cy+70,cx-70,cy+40);
+  ctx.strokeStyle='rgba(74,255,180,0.6)';ctx.lineWidth=2;ctx.stroke();
+  // Apasmara (dwarf underfoot)
+  ctx.beginPath();ctx.ellipse(cx+12,cy+105,18,10,0,0,Math.PI*2);
+  ctx.fillStyle='rgba(255,179,71,0.15)';ctx.fill();
+  ctx.strokeStyle='rgba(255,179,71,0.4)';ctx.lineWidth=1;ctx.stroke();
+  // Labels on left side
+  const labels=[
+    {y:40,text:'Prabhamandala = Light cone / Cosmic horizon',color:'rgba(255,179,71,0.8)'},
+    {y:80,text:'Head = Purusha / Observer / IIT Φ',color:'rgba(200,125,255,0.8)'},
+    {y:120,text:'Body = Prakriti / Quantum field',color:'rgba(122,184,255,0.8)'},
+    {y:160,text:'Raised leg = Asymptotic freedom / Liberation',color:'rgba(74,255,180,0.8)'},
+    {y:200,text:'Standing foot = Symmetry breaking (Apasmara)',color:'rgba(255,179,71,0.7)'},
+    {y:240,text:'Left upper = Agni = Hawking radiation',color:'rgba(255,100,50,0.8)'},
+    {y:280,text:'Right upper = Damaru = String vibration',color:'rgba(74,255,180,0.8)'},
+  ];
+  ctx.font='12px "Nunito", sans-serif';
+  labels.forEach(l=>{
+    ctx.fillStyle=l.color;ctx.textAlign='left';
+    ctx.fillText('▸ '+l.text,20,l.y);
+  });
+})();
+</script>
+</body>
+</html>
